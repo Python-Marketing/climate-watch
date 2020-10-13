@@ -1,0 +1,42 @@
+{% load cms_tags %}
+{% load djangocms_blog i18n easy_thumbnails_tags cms_tags site_server_tags %}
+{% with '/static/climate/' as static_base %}
+
+{% if weather_warnings %}
+<div class="content-lg container">
+    <div class="row margin-b-40">
+        <div class="col-sm-6">
+            <h2>Weather News</h2>
+            <p>Crude but here...</p>
+        </div>
+    </div>
+
+    <div class="row">
+
+
+            {% for warning in weather_warnings %}
+
+                {% if warning.abstract|length|get_digit:"-1" > 1000 %}
+
+            <div class="col-sm-4 sm-margin-b-50">
+                <div class="margin-b-20">
+                    <div class="wow zoomIn" data-wow-duration=".3" data-wow-delay=".1s" >
+                        {% thumbnail warning.main_image 300x120 crop='center' as thumb %}
+                        <img width="90%" height="20%" src="{{ thumb.url }}"  data-toggle="tooltip" alt="{{ warning.main_image.default_alt_text }}" class="img-responsive" />
+                    </div>
+                </div>
+                <h5>{% render_model warning "title" "title" "" "safe" %}</h5>
+                    <p><span class="text-uppercase margin-l-20">{% render_model post "subtitle" "subtitle" "" "safe" %}</span></p>
+                <div style="width:90%;height:200px;overflow:auto;padding-bottom:10px;">
+                {% render_model warning "abstract" "abstract" "" "safe" %}
+                </div>
+
+            </div>
+                {% endif %}
+            {% endfor %}
+
+    </div>
+</div>
+{% endif %}
+
+{% endwith %}

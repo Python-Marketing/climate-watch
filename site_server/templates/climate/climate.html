@@ -1,0 +1,40 @@
+{% load cms_tags %}
+{% load djangocms_blog i18n easy_thumbnails_tags cms_tags site_server_tags %}
+{% with '/static/rezume/' as static_base %}
+
+<section class="" id="header">
+    <div class="overlay-color">
+        <div class="container">
+            <div class="row section-separator">
+                <div class="col-md-12">
+                    <div class="part-inner text-center">
+                        <h1 class="title">Search Weather</h1>
+
+                            <p>Analyse By Location : e.g. singapore, taiwan</p>
+                            <h3 class="error"></h3>
+                    <!-- Default form subscription -->
+                        <form id="weather" action="/api/climate-watch/">
+                          <!-- Default input name -->
+
+                          <input type="text" id="location" class="form-control" value="Manhattan,New York">
+
+                            <br />
+                          <div class="text-center">
+                            <button class="btn btn-warning" type="submit">Send</button>
+                          </div>
+                        </form>
+                    <div class="row" style="height:40%;">
+                    <div class="col-md-6 day-container"></div>
+                    <div class="col-md-6 week-container"></div>
+
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<br /><br />
+
+{% endwith %}
