@@ -1,9 +1,8 @@
 # climate-watch
 Takes the the name of a location with a timeframe and returns usable averages over that time frame.
 
-# Django Content Server
 
-[Home](https://github.com/Python-Marketing/django-content-server)
+[Home](https://github.com/Python-Marketing/climate-watch)
 
 This assumes ubuntu server or desktop.
 
